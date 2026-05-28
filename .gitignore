@@ -1,0 +1,21 @@
+# Cache y archivos de ejecucion local
+.local/
+.settings/
+.tmh/
+*.user
+*.suo
+
+# Paquetes descargados
+[Cc]oursera/
+[Nn]upkg/
+packages/
+
+# Archivos temporales de guardado de UiPath
+.objects/
+.screenshots/
+
+# Archivos del sistema y de Office temporales (por si abres el Excel mientras corre)
+~$*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
