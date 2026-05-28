@@ -1,0 +1,6 @@
+{
+  "Name": "Automatización de Cuentas por Pagar",
+  "ProjectType": "Process",
+  "Description": "Robot de RPA que automatiza el ciclo de Cuentas por Pagar. Realiza la lectura y extracción de datos de facturas en formato PDF, valida los importes mediante conciliación automática contra un archivo maestro de pedidos en Excel y registra las facturas aprobadas en la plataforma web corporativa. Incluye gestión de excepciones de negocio y notificaciones por correo electrónico.",
+  "MainFile": "Main.xaml"
+}
