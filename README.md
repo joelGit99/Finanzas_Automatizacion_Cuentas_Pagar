@@ -1,1 +1,3 @@
-# Finanzas_Automatizacion_Cuentas_Pagar
+Este proceso automatizado (RPA) desarrollado en UiPath Studio optimiza el ciclo de cuentas por pagar mediante la digitalización, validación y registro automático de facturas de proveedores. El objetivo principal es eliminar el procesamiento manual de documentos, reducir drásticamente el error humano y acelerar los tiempos de gestión financiera.
+
+El robot simula el comportamiento de un analista contable: extrae información de documentos no estructurados (PDF), aplica reglas de negocio para validar los datos contra registros internos (Excel) y actualiza los sistemas corporativos (ERP/CRM Web), finalizando con una notificación de estado.
