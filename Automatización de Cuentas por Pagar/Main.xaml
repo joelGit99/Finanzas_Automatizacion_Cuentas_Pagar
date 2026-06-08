@@ -84,52 +84,62 @@
       <AssemblyReference>System.Private.Xml</AssemblyReference>
       <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
       <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="1734,1035" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="1734,1736" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Main" sap:VirtualizedContainerService.HintSize="508,1012" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence DisplayName="Main" sap:VirtualizedContainerService.HintSize="486,1713" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
-        <Variable x:TypeArguments="x:String" Name="str_RutaFacturas" />
+        <Variable x:TypeArguments="x:String" Name="str_CarpetaFacturas" />
         <Variable x:TypeArguments="sd:DataTable" Name="dt_ListaFacturas" />
+        <Variable x:TypeArguments="x:String" Name="str_ExcelListaFacturas" />
       </Sequence.Variables>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="RutaFacturas" CacheStrategy="None" DisplayName="Get Asset" FolderPath="Automatización de Cuentas por Pagar" sap:VirtualizedContainerService.HintSize="474,176" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1">
+      <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="CarpetaFacturas" CacheStrategy="None" DisplayName="Get Asset" FolderPath="Automatización de Cuentas por Pagar" sap:VirtualizedContainerService.HintSize="452,176" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1">
         <ui:GetRobotAsset.Value>
-          <OutArgument x:TypeArguments="x:String">[str_RutaFacturas]</OutArgument>
+          <OutArgument x:TypeArguments="x:String">[str_CarpetaFacturas]</OutArgument>
         </ui:GetRobotAsset.Value>
       </ui:GetRobotAsset>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="01_LeerEntradas - Invoke Workflow File (Workflows\01_LeerEntradas.xaml)" sap:VirtualizedContainerService.HintSize="474,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Workflows\01_LeerEntradas.xaml">
+      <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="RutaExcelFacturas" CacheStrategy="None" DisplayName="Get Asset" FolderPath="Automatización de Cuentas por Pagar" sap:VirtualizedContainerService.HintSize="452,176" sap2010:WorkflowViewState.IdRef="GetRobotAsset_2">
+        <ui:GetRobotAsset.Value>
+          <OutArgument x:TypeArguments="x:String">[str_ExcelListaFacturas]</OutArgument>
+        </ui:GetRobotAsset.Value>
+      </ui:GetRobotAsset>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="01_LeerEntradas - Invoke Workflow File (Workflows\01_LeerEntradas.xaml)" sap:VirtualizedContainerService.HintSize="452,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Workflows\01_LeerEntradas.xaml">
         <ui:InvokeWorkflowFile.Arguments>
-          <InArgument x:TypeArguments="x:String" x:Key="in_str_ExcelListaFacturas">[str_RutaFacturas]</InArgument>
-          <InArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_ListaFacturas">[dt_ListaFacturas]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_str_ExcelListaFacturas">[str_ExcelListaFacturas]</InArgument>
+          <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_ListaFacturas">[dt_ListaFacturas]</OutArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_ListaFacturas]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="474,576" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_ListaFacturas]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="452,1101" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
         <ui:ForEachRow.Body>
           <ActivityAction x:TypeArguments="sd:DataRow">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="472,403" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="450,928" sap2010:WorkflowViewState.IdRef="Sequence_3">
               <Sequence.Variables>
                 <Variable x:TypeArguments="x:String" Name="str_DatosExtraidos" />
                 <Variable x:TypeArguments="x:String" Name="str_NumeroFacturaExc" />
+                <Variable x:TypeArguments="x:String" Name="str_RutaFactura" />
+                <Variable x:TypeArguments="x:String" Name="str_NombreProveedorExc" />
+                <Variable x:TypeArguments="x:String" Name="str_MontoTotalExc" />
               </Sequence.Variables>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Assign sap:VirtualizedContainerService.HintSize="438,175" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign sap:VirtualizedContainerService.HintSize="416,175" sap2010:WorkflowViewState.IdRef="Assign_1">
                 <Assign.To>
                   <OutArgument x:TypeArguments="x:String">[str_NumeroFacturaExc]</OutArgument>
                 </Assign.To>
@@ -137,9 +147,33 @@
                   <InArgument x:TypeArguments="x:String">[CurrentRow.Item("Número de factura").ToString]</InArgument>
                 </Assign.Value>
               </Assign>
-              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="02_ExtraerDatosPDF - Invoke Workflow File (Workflows\02_ExtraerDatosPDF.xaml)" sap:VirtualizedContainerService.HintSize="438,168" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Workflows\02_ExtraerDatosPDF.xaml">
+              <Assign sap:VirtualizedContainerService.HintSize="416,175" sap2010:WorkflowViewState.IdRef="Assign_3">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[str_NombreProveedorExc]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[CurrentRow.Item("Nombre del proveedor").ToString]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <Assign sap:VirtualizedContainerService.HintSize="416,175" sap2010:WorkflowViewState.IdRef="Assign_4">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[str_MontoTotalExc]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[CurrentRow.Item("Monto total").ToString]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <Assign sap:VirtualizedContainerService.HintSize="416,175" sap2010:WorkflowViewState.IdRef="Assign_2">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[str_RutaFactura]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[str_CarpetaFacturas + "Factura_" + str_NumeroFacturaExc + ".pdf"]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="02_ExtraerDatosPDF - Invoke Workflow File (Workflows\02_ExtraerDatosPDF.xaml)" sap:VirtualizedContainerService.HintSize="416,168" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Workflows\02_ExtraerDatosPDF.xaml">
                 <ui:InvokeWorkflowFile.Arguments>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_str_RutaFactura" />
+                  <InArgument x:TypeArguments="x:String" x:Key="in_str_RutaFactura">[str_RutaFactura]</InArgument>
                   <InArgument x:TypeArguments="x:String" x:Key="out_str_DatosExtraidos">[str_DatosExtraidos]</InArgument>
                 </ui:InvokeWorkflowFile.Arguments>
               </ui:InvokeWorkflowFile>
